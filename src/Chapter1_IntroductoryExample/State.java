@@ -5,7 +5,7 @@ public class State {
 
     private String name;
     private List<Command> actions = new ArrayList<>();
-    private Map<String, Transition> transitions = new HashMap<String, Transition>();
+    private Map<String, Transition> transitions = new HashMap<>();
 
     public State(String name) {
         this.name = name;
@@ -44,4 +44,7 @@ public class State {
     }
 
 
+    public String getName() {
+        return name;
+    }
 }

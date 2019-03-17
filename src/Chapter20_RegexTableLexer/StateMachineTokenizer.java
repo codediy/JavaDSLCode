@@ -1,5 +1,7 @@
 package Chapter20_RegexTableLexer;
 
+import Chapter21_RecursiveDescentParser.TokenBuffer;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.regex.Matcher;
@@ -9,6 +11,7 @@ public class StateMachineTokenizer {
 
     private String scannerBuffer;
     private ArrayList<Token> tokenList;
+    private TokenBuffer tokenBuffer;
     private ArrayList<ScanRecognizer> recognizerPatterns;
 
     public void parse() {
@@ -36,6 +39,8 @@ public class StateMachineTokenizer {
             if (matcher.find()){
                 if (recognizer.isOutputToken()){
                     tokenList.add(new Token(recognizer.getToken(),matcher.group()));
+                    /*21递归下降语法解析器token列表*/
+                    tokenBuffer.addToken(new Token(recognizer.getToken(),matcher.group()));
                 }
                 tokenMatch  = true;
                 /*截取部分*/

@@ -7,6 +7,10 @@ public class State {
     private List<Command> actions = new ArrayList<>();
     private Map<String, Transition> transitions = new HashMap<String, Transition>();
 
+    public State(String name) {
+        this.name = name;
+    }
+
     public void addTransition(Event event,State  targetState){
         assert null != targetState;
         transitions.put(event.getCode(),new Transition(this,event,targetState));
@@ -27,7 +31,9 @@ public class State {
             commandsChannel.send(command.getCode());
         }
     }
-
+    public void addAction(Command command){
+        actions.add(command);
+    }
     /*获取所有的转换目标*/
     public Collection<State> getAllTargets(){
         List<State> result = new ArrayList<>();

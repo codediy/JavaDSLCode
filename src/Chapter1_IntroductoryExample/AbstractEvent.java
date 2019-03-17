@@ -1,7 +1,7 @@
 package Chapter1_IntroductoryExample;
 
 public class AbstractEvent {
-    private String name,code;
+    protected String name,code;
 
     public AbstractEvent(String name, String code) {
         this.name = name;
